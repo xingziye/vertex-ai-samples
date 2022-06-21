@@ -236,9 +236,9 @@ def get_changed_notebooks(
         print(f"Looking for notebooks that changed from branch: {base_branch}")
 
         branching_commit = subprocess.check_output(
-            ["git", "merge-base", "HEAD", base_branch]
+            ["git", "merge-base", "HEAD", f"origin/{base_branch}"]
         )
-        
+
         notebooks = subprocess.check_output(
             ["git", "diff", "--name-only", branching_commit, "--"] + test_paths
         )
